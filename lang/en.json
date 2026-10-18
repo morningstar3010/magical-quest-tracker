@@ -1,0 +1,139 @@
+{
+ "MQT": {
+  "Titolo": "Magical Quest Tracker",
+  "Missione": "Quest",
+  "Comune": {
+   "si": "Yes",
+   "no": "No",
+   "annulla": "Cancel"
+  },
+  "Stati": {
+   "disponibile": "Available",
+   "attiva": "Active",
+   "completata": "Completed",
+   "fallita": "Failed"
+  },
+  "StatiPlurale": {
+   "disponibile": "Available",
+   "attiva": "In progress",
+   "completata": "Completed",
+   "fallita": "Failed"
+  },
+  "Campi": {
+   "titolo": "Title",
+   "stato": "Status",
+   "visibile": "Visible to players",
+   "zona": "Area",
+   "png": "Non-player characters",
+   "riassunto": "Summary",
+   "descrizione": "Description",
+   "immagine": "Image",
+   "obiettivi": "Objectives",
+   "segreto": "Secret: only the GM sees it",
+   "ricompense": "Rewards",
+   "altro": "Other rewards",
+   "premiVisibili": "Rewards visible to players",
+   "scadenza": "Deadline",
+   "personaggi": "Followed by"
+  },
+  "Premi": {
+   "valuta": "Currency",
+   "pe": "XP"
+  },
+  "Pannello": {
+   "titolo": "Magical Quest Tracker – GM panel",
+   "pulsante": "Magical Quest Tracker",
+   "nuova": "New quest",
+   "nuovaTitolo": "New quest",
+   "senzaTitolo": "(untitled)",
+   "cerca": "Search by name, area, description or NPC",
+   "tutteZone": "All areas",
+   "tuttiPng": "All NPCs",
+   "tutte": "All",
+   "nessuna": "No quests. Press «New quest» or add one from the adventures.",
+   "dalleAvventure": "Adventure quests",
+   "aggiungiDef": "Add to the tracker",
+   "attivaDef": "Activate now",
+   "daAvventura": "This quest comes from an adventure: «Open the journal» in its sheet leads to the page where it is written.",
+   "scegliUna": "Choose a quest on the left to see and edit it.",
+   "attiva": "Activate",
+   "completa": "Completed…",
+   "fallita": "Failed",
+   "riapri": "Reopen",
+   "rendiVisibile": "Show in the players' journals",
+   "nascondi": "Hide from players",
+   "visibile": "Visible to players",
+   "nascosta": "Hidden from players",
+   "mostra": "Open for players",
+   "scheda": "Sheet",
+   "duplica": "Duplicate",
+   "elimina": "Delete",
+   "pngPlaceholder": "Type a name and press Enter, or drop an actor here",
+   "nuovoObiettivo": "New objective",
+   "nessunObiettivo": "No objectives (optional).",
+   "trascinaOggetti": "Drop items here from any compendium or from the Items sidebar; change the quantity next to them.",
+   "scadenzaPlaceholder": "For example: before the new moon (optional)"
+  },
+  "Scheda": {
+   "nonDisponibile": "This quest is not available.",
+   "premiNascosti": "Players do not see the rewards",
+   "consegnato": "Rewards given",
+   "note": "My notes",
+   "notePlaceholder": "Your own notes: only you can see them.",
+   "apriDiario": "Open the journal",
+   "modifica": "Edit"
+  },
+  "Consegna": {
+   "titolo": "Quest completed: {titolo}",
+   "spiega": "Choose who receives the rewards. Items go into the inventory, currency and experience points are added to the sheet.",
+   "chi": "Who receives the rewards",
+   "nessunPG": "No player characters in the world.",
+   "oggetti": "Items",
+   "totale": "Total",
+   "uguali": "split equally",
+   "mano": "I decide",
+   "aMano": "In this game system currency and experience points are not added automatically: they are written in the chat report.",
+   "consegna": "Give the rewards and complete",
+   "senzaPremi": "Complete without rewards",
+   "daDareAMano": "to give by hand",
+   "chat": "Quest completed: {titolo}"
+  },
+  "Diari": {
+   "titolo": "Quests",
+   "nessuna": "No quests in progress.",
+   "daAttivare": "to activate",
+   "attivaOra": "Activate",
+   "attivaMostra": "Activate and show to players",
+   "soloAggiungi": "Add without activating"
+  },
+  "Domande": {
+   "elimina": "Delete the quest «{titolo}»?"
+  },
+  "Avvisi": {
+   "soloMaster": "Only the GM can use the quest panel.",
+   "soloOggetti": "Only items can be dropped here.",
+   "soloAttori": "Only actors can be dropped here.",
+   "troppi": "«{nome}»: you assigned more than {n}.",
+   "diarioNonTrovato": "The journal of this quest is no longer in the world.",
+   "primaVisibile": "Make the quest visible to players first.",
+   "nonAncora": "This quest has not been revealed yet.",
+   "definizioneNonTrovata": "Quest «{chiave}» not found in the journals.",
+   "aggiunta": "Quest added to the tracker: {titolo}."
+  },
+  "Impostazioni": {
+   "lingua": {
+    "nome": "Magical Quest Tracker language",
+    "hint": "Language of this module's texts. «Automatic» follows Foundry's language.",
+    "auto": "Automatic"
+   },
+   "nelDiario": {
+    "nome": "Quests at the top of the Journals",
+    "hint": "Shows the quest box at the top of the Journals sidebar (players only see the visible ones)."
+   },
+   "tastoPannello": {
+    "nome": "Open the quest panel",
+    "hint": "GM only."
+   }
+  }
+ }
+}

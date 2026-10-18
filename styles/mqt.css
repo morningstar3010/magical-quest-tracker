@@ -1,0 +1,121 @@
+/* MAGICAL QUEST TRACKER – stile di pannello, scheda, consegna e riquadro dei Diari (usa i colori del tema di Foundry). */
+.mqt { --mqt-oro: #c9a227; --mqt-attiva: #d08a1e; --mqt-completata: #3f9b5a; --mqt-fallita: #b8433a; --mqt-disponibile: #6d8fb3; }
+.mqt .window-content { padding: 0.5rem 0.75rem; }
+.mqt h2 { margin: 0 0 0.25rem; border: none; }
+.mqt h3 { margin: 0.75rem 0 0.35rem; font-size: 1.05em; border-bottom: 1px solid var(--color-border, #7a7971); }
+.mqt .mqt-fila { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin: 4px 0; }
+.mqt .mqt-fila button { flex: 1 1 auto; width: auto; margin: 0; }
+.mqt .mqt-nota { font-size: 0.85em; opacity: 0.75; }
+.mqt .mqt-vuoto { opacity: 0.7; font-style: italic; text-align: center; padding: 1rem; }
+.mqt .stato-attiva > i:first-child, .mqt .mqt-stato.stato-attiva { color: var(--mqt-attiva); }
+.mqt .stato-completata > i:first-child, .mqt .mqt-stato.stato-completata { color: var(--mqt-completata); }
+.mqt .stato-fallita > i:first-child, .mqt .mqt-stato.stato-fallita { color: var(--mqt-fallita); }
+.mqt .stato-disponibile > i:first-child, .mqt .mqt-stato.stato-disponibile { color: var(--mqt-disponibile); }
+
+/* Pannello */
+#mqt-pannello .window-content { display: flex; flex-direction: column; overflow: hidden; }
+#mqt-pannello .mqt-barra { flex: none; display: flex; gap: 6px; margin-bottom: 6px; }
+#mqt-pannello .mqt-barra button { width: auto; }
+#mqt-pannello .mqt-corpo { flex: 1; display: flex; gap: 10px; min-height: 0; }
+#mqt-pannello .mqt-sinistra { flex: 0 0 330px; overflow-y: auto; border-right: 1px solid var(--color-border, #7a7971); padding-right: 8px; }
+#mqt-pannello .mqt-destra { flex: 1; overflow-y: auto; padding-right: 4px; }
+#mqt-pannello .mqt-filtri input[type=search] { width: 100%; margin-bottom: 4px; }
+#mqt-pannello .mqt-filtri select { flex: 1; min-width: 0; }
+#mqt-pannello .mqt-stati { display: flex; flex-wrap: wrap; gap: 2px; margin: 6px 0; }
+#mqt-pannello .mqt-stati a { padding: 2px 6px; border-radius: 10px; border: 1px solid transparent; font-size: 0.85em; cursor: pointer; }
+#mqt-pannello .mqt-stati a.attiva { border-color: var(--mqt-oro); background: rgba(201, 162, 39, 0.15); font-weight: bold; }
+#mqt-pannello .mqt-stati a span { opacity: 0.7; }
+#mqt-pannello .mqt-elenco { list-style: none; margin: 0; padding: 0; }
+#mqt-pannello .mqt-voce { display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; }
+#mqt-pannello .mqt-voce:hover { background: rgba(255, 255, 255, 0.06); }
+#mqt-pannello .mqt-voce.scelta { border-color: var(--mqt-oro); background: rgba(201, 162, 39, 0.12); }
+#mqt-pannello .mqt-voce > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+#mqt-pannello .mqt-voce strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#mqt-pannello .mqt-voce small { opacity: 0.7; }
+#mqt-pannello .mqt-occhio { opacity: 0.6; }
+#mqt-pannello .mqt-titolo-def { margin: 10px 0 4px; font-size: 0.95em; }
+#mqt-pannello .mqt-def a { cursor: pointer; opacity: 0.8; }
+#mqt-pannello .mqt-azioni { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+#mqt-pannello .mqt-azioni button { width: auto; flex: 0 1 auto; margin: 0; }
+#mqt-pannello .mqt-testa-editor { display: flex; gap: 10px; }
+#mqt-pannello .mqt-immagine-scelta { flex: 0 0 110px; height: 110px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--color-border, #7a7971); border-radius: 6px; cursor: pointer; font-size: 2em; opacity: 0.85; }
+#mqt-pannello .mqt-immagine-scelta img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; border: none; }
+#mqt-pannello .mqt-campi-testa { flex: 1; }
+#mqt-pannello .form-group { margin: 3px 0; }
+#mqt-pannello .form-group > label { flex: 0 0 34%; }
+#mqt-pannello .mqt-blocco { flex-direction: column; align-items: stretch; }
+#mqt-pannello .mqt-descrizione-editor prose-mirror, #mqt-pannello .mqt-descrizione-editor textarea { min-height: 160px; width: 100%; display: block; }
+#mqt-pannello .mqt-png { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; width: 100%; padding: 3px; border: 1px dashed var(--color-border, #7a7971); border-radius: 4px; }
+#mqt-pannello .mqt-png input { flex: 1; min-width: 160px; border: none; background: none; }
+#mqt-pannello .mqt-etichetta { padding: 1px 6px; border-radius: 10px; background: rgba(201, 162, 39, 0.18); border: 1px solid var(--mqt-oro); font-size: 0.9em; }
+#mqt-pannello .mqt-etichetta a { cursor: pointer; margin-left: 2px; }
+#mqt-pannello .mqt-obiettivi-editor { list-style: none; padding: 0; margin: 0; }
+#mqt-pannello .mqt-obiettivi-editor li { display: flex; gap: 6px; align-items: center; margin: 2px 0; }
+#mqt-pannello .mqt-obiettivi-editor input[type=text] { flex: 1; }
+#mqt-pannello .mqt-obiettivi-editor a, #mqt-pannello .mqt-premi-editor a { cursor: pointer; }
+#mqt-pannello .mqt-premi-editor { border: 2px dashed var(--mqt-oro); border-radius: 6px; padding: 6px; min-height: 48px; }
+#mqt-pannello .mqt-premi-editor ul { list-style: none; padding: 0; margin: 0; }
+#mqt-pannello .mqt-premi-editor li { display: flex; gap: 8px; align-items: center; margin: 2px 0; }
+#mqt-pannello .mqt-premi-editor li img { width: 28px; height: 28px; border: none; }
+#mqt-pannello .mqt-premi-editor li > a:first-of-type { flex: 1; }
+#mqt-pannello .mqt-premi-editor input[type=number] { flex: 0 0 64px; }
+#mqt-pannello .mqt-monete { margin-top: 6px; }
+#mqt-pannello .mqt-moneta { display: flex; align-items: center; gap: 4px; }
+#mqt-pannello .mqt-moneta input { width: 70px; }
+.mqt .mqt-pgs { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.mqt .mqt-pg { display: flex; align-items: center; gap: 4px; }
+.mqt .mqt-pg img { width: 26px; height: 26px; border: none; border-radius: 50%; object-fit: cover; }
+
+/* Scheda della missione */
+.mqt-scheda .mqt-testa, .mqt-anteprima { display: flex; gap: 12px; align-items: flex-start; }
+.mqt-anteprima { display: block; }
+.mqt .mqt-immagine { width: 140px; max-height: 180px; object-fit: cover; border-radius: 8px; border: 2px solid var(--mqt-oro); float: none; }
+.mqt-anteprima .mqt-immagine { float: right; margin: 0 0 0.5rem 0.75rem; }
+.mqt .mqt-stato { font-weight: bold; margin: 0 0 0.3rem; }
+.mqt .mqt-riassunto { font-style: italic; font-size: 1.05em; border-left: 3px solid var(--mqt-oro); padding-left: 0.6rem; margin: 0.6rem 0; }
+.mqt .mqt-scadenza { color: var(--mqt-fallita); }
+.mqt .mqt-obiettivi, .mqt .mqt-premi { list-style: none; padding: 0; margin: 0; }
+.mqt .mqt-obiettivi li { display: flex; gap: 6px; align-items: baseline; margin: 3px 0; }
+.mqt .mqt-obiettivi li.fatto span { text-decoration: line-through; opacity: 0.65; }
+.mqt .mqt-obiettivi li.segreto { opacity: 0.8; font-style: italic; }
+.mqt .mqt-obiettivi a { cursor: pointer; }
+.mqt .mqt-premi li { display: flex; gap: 6px; align-items: center; margin: 3px 0; }
+.mqt .mqt-premi li img { width: 24px; height: 24px; border: none; }
+.mqt .mqt-conto { font-size: 0.85em; opacity: 0.75; font-weight: normal; }
+.mqt .mqt-note { width: 100%; min-height: 70px; }
+
+/* Consegna */
+.mqt-consegna-finestra .mqt-tabella { width: 100%; border-collapse: collapse; margin: 6px 0; }
+.mqt-consegna-finestra .mqt-tabella th, .mqt-consegna-finestra .mqt-tabella td { padding: 3px 5px; text-align: center; border-bottom: 1px solid rgba(128, 128, 128, 0.3); }
+.mqt-consegna-finestra .mqt-tabella .mqt-nome { text-align: left; display: flex; align-items: center; gap: 6px; }
+.mqt-consegna-finestra .mqt-tabella .mqt-nome img { width: 24px; height: 24px; border: none; }
+.mqt-consegna-finestra .mqt-tabella input { width: 60px; text-align: center; }
+.mqt-consegna-finestra .mqt-sezione td { text-align: left; font-weight: bold; background: rgba(201, 162, 39, 0.12); }
+.mqt-consegna-finestra .mqt-sezione select { width: auto; margin-left: 8px; font-weight: normal; }
+.mqt-consegna-finestra .giusto { color: var(--mqt-completata); font-weight: bold; }
+.mqt-consegna-finestra .sbagliato { color: var(--mqt-fallita); font-weight: bold; }
+.mqt-consegna-finestra .mqt-auto { opacity: 0.85; }
+
+/* Riquadro in cima ai Diari */
+.mqt-diari { margin: 6px 8px 8px; padding: 6px 8px; border: 1px solid #c9a227; border-radius: 8px; background: linear-gradient(180deg, rgba(201, 162, 39, 0.16), rgba(201, 162, 39, 0.04)); }
+.mqt-diari header { display: flex; align-items: center; justify-content: space-between; }
+.mqt-diari h3 { margin: 0; font-size: 1em; border: none; color: #e2c46a; }
+.mqt-diari header a { cursor: pointer; }
+.mqt-diari .mqt-gruppo summary { cursor: pointer; font-size: 0.9em; margin: 4px 0 2px; }
+.mqt-diari .mqt-gruppo summary span { opacity: 0.7; }
+.mqt-diari ul { list-style: none; margin: 0; padding: 0; }
+.mqt-diari .mqt-voce-diari { display: flex; align-items: center; gap: 6px; padding: 3px 4px; border-radius: 4px; cursor: pointer; }
+.mqt-diari .mqt-voce-diari:hover { background: rgba(255, 255, 255, 0.08); }
+.mqt-diari .mqt-nome { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mqt-diari .mqt-conto { font-size: 0.8em; opacity: 0.75; }
+.mqt-diari .mqt-occhio { opacity: 0.5; font-size: 0.8em; }
+.mqt-diari .stato-attiva > i:first-child { color: #e0a040; }
+.mqt-diari .stato-completata > i:first-child { color: #5fbf7a; }
+.mqt-diari .stato-fallita > i:first-child { color: #d0645a; }
+.mqt-diari .stato-disponibile > i:first-child { color: #8fb0d3; }
+.mqt-diari .mqt-vuoto { font-size: 0.85em; opacity: 0.7; font-style: italic; margin: 4px 0; }
+
+/* Richiamo nei diari */
+a.mqt-link .mqt-badge { font-size: 0.75em; padding: 0 5px; border-radius: 8px; background: rgba(0, 0, 0, 0.15); }
+a.mqt-link .mqt-badge.stato-nuova { background: rgba(201, 162, 39, 0.35); }
+.mqt-chat h3 { border: none; margin: 0 0 4px; }

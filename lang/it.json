@@ -1,0 +1,139 @@
+{
+ "MQT": {
+  "Titolo": "Magical Quest Tracker",
+  "Missione": "Missione",
+  "Comune": {
+   "si": "Sì",
+   "no": "No",
+   "annulla": "Annulla"
+  },
+  "Stati": {
+   "disponibile": "Disponibile",
+   "attiva": "Attiva",
+   "completata": "Completata",
+   "fallita": "Fallita"
+  },
+  "StatiPlurale": {
+   "disponibile": "Disponibili",
+   "attiva": "In corso",
+   "completata": "Completate",
+   "fallita": "Fallite"
+  },
+  "Campi": {
+   "titolo": "Titolo",
+   "stato": "Stato",
+   "visibile": "Visibile ai giocatori",
+   "zona": "Zona",
+   "png": "Personaggi non giocanti",
+   "riassunto": "Riassunto",
+   "descrizione": "Descrizione",
+   "immagine": "Immagine",
+   "obiettivi": "Obiettivi",
+   "segreto": "Segreto: lo vede solo il master",
+   "ricompense": "Premi",
+   "altro": "Altri premi",
+   "premiVisibili": "Premi visibili ai giocatori",
+   "scadenza": "Scadenza",
+   "personaggi": "La seguono"
+  },
+  "Premi": {
+   "valuta": "Valuta",
+   "pe": "PE"
+  },
+  "Pannello": {
+   "titolo": "Magical Quest Tracker – Pannello del master",
+   "pulsante": "Magical Quest Tracker",
+   "nuova": "Nuova missione",
+   "nuovaTitolo": "Nuova missione",
+   "senzaTitolo": "(senza titolo)",
+   "cerca": "Cerca per nome, zona, descrizione o PNG",
+   "tutteZone": "Tutte le zone",
+   "tuttiPng": "Tutti i PNG",
+   "tutte": "Tutte",
+   "nessuna": "Nessuna missione. Premi «Nuova missione» o aggiungine una dalle avventure.",
+   "dalleAvventure": "Missioni delle avventure",
+   "aggiungiDef": "Aggiungi al tracker",
+   "attivaDef": "Attiva subito",
+   "daAvventura": "Questa missione viene da un'avventura: «Apri il diario» nella scheda porta alla pagina dove è scritta.",
+   "scegliUna": "Scegli una missione a sinistra per vederla e modificarla.",
+   "attiva": "Attiva",
+   "completa": "Completata…",
+   "fallita": "Fallita",
+   "riapri": "Riapri",
+   "rendiVisibile": "Mostra nei diari dei giocatori",
+   "nascondi": "Nascondi ai giocatori",
+   "visibile": "Visibile ai giocatori",
+   "nascosta": "Nascosta ai giocatori",
+   "mostra": "Apri ai giocatori",
+   "scheda": "Scheda",
+   "duplica": "Duplica",
+   "elimina": "Elimina",
+   "pngPlaceholder": "Scrivi un nome e premi Invio, oppure trascina qui un attore",
+   "nuovoObiettivo": "Nuovo obiettivo",
+   "nessunObiettivo": "Nessun obiettivo (facoltativi).",
+   "trascinaOggetti": "Trascina qui gli oggetti da qualsiasi compendio o dalla barra degli oggetti; la quantità si cambia accanto.",
+   "scadenzaPlaceholder": "Per esempio: entro la luna nuova (facoltativa)"
+  },
+  "Scheda": {
+   "nonDisponibile": "Questa missione non è disponibile.",
+   "premiNascosti": "I giocatori non vedono i premi",
+   "consegnato": "Premi consegnati",
+   "note": "Le mie note",
+   "notePlaceholder": "Appunti tuoi: li vedi solo tu.",
+   "apriDiario": "Apri il diario",
+   "modifica": "Modifica"
+  },
+  "Consegna": {
+   "titolo": "Missione completata: {titolo}",
+   "spiega": "Scegli chi riceve i premi. Gli oggetti vanno nell'inventario, la valuta e i punti esperienza si sommano nella scheda.",
+   "chi": "Chi riceve i premi",
+   "nessunPG": "Nessun personaggio dei giocatori nel mondo.",
+   "oggetti": "Oggetti",
+   "totale": "Totale",
+   "uguali": "in parti uguali",
+   "mano": "decido io",
+   "aMano": "In questo sistema di gioco valuta e punti esperienza non si sommano da soli: sono scritti nel resoconto in chat.",
+   "consegna": "Consegna i premi e completa",
+   "senzaPremi": "Completa senza premi",
+   "daDareAMano": "da consegnare a mano",
+   "chat": "Missione completata: {titolo}"
+  },
+  "Diari": {
+   "titolo": "Missioni",
+   "nessuna": "Nessuna missione in corso.",
+   "daAttivare": "da attivare",
+   "attivaOra": "Attiva",
+   "attivaMostra": "Attiva e mostra ai giocatori",
+   "soloAggiungi": "Aggiungi senza attivare"
+  },
+  "Domande": {
+   "elimina": "Eliminare la missione «{titolo}»?"
+  },
+  "Avvisi": {
+   "soloMaster": "Solo il master può usare il pannello delle missioni.",
+   "soloOggetti": "Qui si possono trascinare solo oggetti.",
+   "soloAttori": "Qui si possono trascinare solo attori.",
+   "troppi": "«{nome}»: ne hai assegnati più di {n}.",
+   "diarioNonTrovato": "Il diario di questa missione non c'è più nel mondo.",
+   "primaVisibile": "Rendi prima la missione visibile ai giocatori.",
+   "nonAncora": "Questa missione non è ancora stata rivelata.",
+   "definizioneNonTrovata": "Missione «{chiave}» non trovata nei diari.",
+   "aggiunta": "Missione aggiunta al tracker: {titolo}."
+  },
+  "Impostazioni": {
+   "lingua": {
+    "nome": "Lingua di Magical Quest Tracker",
+    "hint": "Lingua dei testi di questo modulo. «Automatica» segue la lingua di Foundry.",
+    "auto": "Automatica"
+   },
+   "nelDiario": {
+    "nome": "Missioni in cima ai Diari",
+    "hint": "Mostra il riquadro delle missioni in cima alla sezione dei Diari (i giocatori vedono solo quelle rese visibili)."
+   },
+   "tastoPannello": {
+    "nome": "Apri il pannello delle missioni",
+    "hint": "Solo per il master."
+   }
+  }
+ }
+}

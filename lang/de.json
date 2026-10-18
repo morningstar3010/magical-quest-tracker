@@ -1,0 +1,139 @@
+{
+ "MQT": {
+  "Titolo": "Magical Quest Tracker",
+  "Missione": "Quest",
+  "Comune": {
+   "si": "Ja",
+   "no": "Nein",
+   "annulla": "Abbrechen"
+  },
+  "Stati": {
+   "disponibile": "Verfügbar",
+   "attiva": "Aktiv",
+   "completata": "Abgeschlossen",
+   "fallita": "Gescheitert"
+  },
+  "StatiPlurale": {
+   "disponibile": "Verfügbar",
+   "attiva": "Laufend",
+   "completata": "Abgeschlossen",
+   "fallita": "Gescheitert"
+  },
+  "Campi": {
+   "titolo": "Titel",
+   "stato": "Status",
+   "visibile": "Für Spieler sichtbar",
+   "zona": "Gebiet",
+   "png": "Nichtspielercharaktere",
+   "riassunto": "Zusammenfassung",
+   "descrizione": "Beschreibung",
+   "immagine": "Bild",
+   "obiettivi": "Ziele",
+   "segreto": "Geheim: nur die SL sieht es",
+   "ricompense": "Belohnungen",
+   "altro": "Weitere Belohnungen",
+   "premiVisibili": "Belohnungen für Spieler sichtbar",
+   "scadenza": "Frist",
+   "personaggi": "Verfolgt von"
+  },
+  "Premi": {
+   "valuta": "Währung",
+   "pe": "EP"
+  },
+  "Pannello": {
+   "titolo": "Magical Quest Tracker – SL-Panel",
+   "pulsante": "Magical Quest Tracker",
+   "nuova": "Neue Quest",
+   "nuovaTitolo": "Neue Quest",
+   "senzaTitolo": "(ohne Titel)",
+   "cerca": "Suche nach Name, Gebiet, Beschreibung oder NSC",
+   "tutteZone": "Alle Gebiete",
+   "tuttiPng": "Alle NSC",
+   "tutte": "Alle",
+   "nessuna": "Keine Quests. Drücke «Neue Quest» oder füge eine aus den Abenteuern hinzu.",
+   "dalleAvventure": "Quests der Abenteuer",
+   "aggiungiDef": "Zum Tracker hinzufügen",
+   "attivaDef": "Sofort aktivieren",
+   "daAvventura": "Diese Quest stammt aus einem Abenteuer: «Journal öffnen» im Blatt führt zur Seite, auf der sie steht.",
+   "scegliUna": "Wähle links eine Quest, um sie zu sehen und zu bearbeiten.",
+   "attiva": "Aktivieren",
+   "completa": "Abgeschlossen…",
+   "fallita": "Gescheitert",
+   "riapri": "Wieder öffnen",
+   "rendiVisibile": "In den Journalen der Spieler zeigen",
+   "nascondi": "Vor den Spielern verbergen",
+   "visibile": "Für Spieler sichtbar",
+   "nascosta": "Vor Spielern verborgen",
+   "mostra": "Für Spieler öffnen",
+   "scheda": "Blatt",
+   "duplica": "Duplizieren",
+   "elimina": "Löschen",
+   "pngPlaceholder": "Name eingeben und Enter drücken, oder einen Akteur hierher ziehen",
+   "nuovoObiettivo": "Neues Ziel",
+   "nessunObiettivo": "Keine Ziele (optional).",
+   "trascinaOggetti": "Ziehe Gegenstände aus einem beliebigen Kompendium oder der Gegenstandsleiste hierher; die Menge änderst du daneben.",
+   "scadenzaPlaceholder": "Zum Beispiel: vor dem Neumond (optional)"
+  },
+  "Scheda": {
+   "nonDisponibile": "Diese Quest ist nicht verfügbar.",
+   "premiNascosti": "Die Spieler sehen die Belohnungen nicht",
+   "consegnato": "Vergebene Belohnungen",
+   "note": "Meine Notizen",
+   "notePlaceholder": "Deine Notizen: nur du siehst sie.",
+   "apriDiario": "Journal öffnen",
+   "modifica": "Bearbeiten"
+  },
+  "Consegna": {
+   "titolo": "Quest abgeschlossen: {titolo}",
+   "spiega": "Wähle, wer die Belohnungen erhält. Gegenstände kommen ins Inventar, Währung und Erfahrungspunkte werden auf dem Bogen addiert.",
+   "chi": "Wer erhält die Belohnungen",
+   "nessunPG": "Keine Spielercharaktere in der Welt.",
+   "oggetti": "Gegenstände",
+   "totale": "Gesamt",
+   "uguali": "zu gleichen Teilen",
+   "mano": "ich entscheide",
+   "aMano": "In diesem Spielsystem werden Währung und Erfahrungspunkte nicht automatisch addiert: sie stehen im Bericht im Chat.",
+   "consegna": "Belohnungen vergeben und abschließen",
+   "senzaPremi": "Ohne Belohnungen abschließen",
+   "daDareAMano": "von Hand zu vergeben",
+   "chat": "Quest abgeschlossen: {titolo}"
+  },
+  "Diari": {
+   "titolo": "Quests",
+   "nessuna": "Keine laufenden Quests.",
+   "daAttivare": "zu aktivieren",
+   "attivaOra": "Aktivieren",
+   "attivaMostra": "Aktivieren und den Spielern zeigen",
+   "soloAggiungi": "Hinzufügen ohne zu aktivieren"
+  },
+  "Domande": {
+   "elimina": "Die Quest «{titolo}» löschen?"
+  },
+  "Avvisi": {
+   "soloMaster": "Nur die SL kann das Quest-Panel benutzen.",
+   "soloOggetti": "Hier können nur Gegenstände abgelegt werden.",
+   "soloAttori": "Hier können nur Akteure abgelegt werden.",
+   "troppi": "«{nome}»: du hast mehr als {n} vergeben.",
+   "diarioNonTrovato": "Das Journal dieser Quest ist nicht mehr in der Welt.",
+   "primaVisibile": "Mache die Quest zuerst für die Spieler sichtbar.",
+   "nonAncora": "Diese Quest wurde noch nicht enthüllt.",
+   "definizioneNonTrovata": "Quest «{chiave}» in den Journalen nicht gefunden.",
+   "aggiunta": "Quest zum Tracker hinzugefügt: {titolo}."
+  },
+  "Impostazioni": {
+   "lingua": {
+    "nome": "Sprache von Magical Quest Tracker",
+    "hint": "Sprache der Texte dieses Moduls. «Automatisch» folgt der Sprache von Foundry.",
+    "auto": "Automatisch"
+   },
+   "nelDiario": {
+    "nome": "Quests oben in den Journalen",
+    "hint": "Zeigt den Quest-Kasten oben in der Journalleiste (Spieler sehen nur die sichtbaren)."
+   },
+   "tastoPannello": {
+    "nome": "Quest-Panel öffnen",
+    "hint": "Nur für die SL."
+   }
+  }
+ }
+}

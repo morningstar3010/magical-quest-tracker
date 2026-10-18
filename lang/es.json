@@ -1,0 +1,139 @@
+{
+ "MQT": {
+  "Titolo": "Magical Quest Tracker",
+  "Missione": "Misión",
+  "Comune": {
+   "si": "Sí",
+   "no": "No",
+   "annulla": "Cancelar"
+  },
+  "Stati": {
+   "disponibile": "Disponible",
+   "attiva": "Activa",
+   "completata": "Completada",
+   "fallita": "Fallida"
+  },
+  "StatiPlurale": {
+   "disponibile": "Disponibles",
+   "attiva": "En curso",
+   "completata": "Completadas",
+   "fallita": "Fallidas"
+  },
+  "Campi": {
+   "titolo": "Título",
+   "stato": "Estado",
+   "visibile": "Visible para los jugadores",
+   "zona": "Zona",
+   "png": "Personajes no jugadores",
+   "riassunto": "Resumen",
+   "descrizione": "Descripción",
+   "immagine": "Imagen",
+   "obiettivi": "Objetivos",
+   "segreto": "Secreto: solo lo ve el DJ",
+   "ricompense": "Recompensas",
+   "altro": "Otras recompensas",
+   "premiVisibili": "Recompensas visibles para los jugadores",
+   "scadenza": "Plazo",
+   "personaggi": "La siguen"
+  },
+  "Premi": {
+   "valuta": "Moneda",
+   "pe": "PX"
+  },
+  "Pannello": {
+   "titolo": "Magical Quest Tracker – Panel del DJ",
+   "pulsante": "Magical Quest Tracker",
+   "nuova": "Nueva misión",
+   "nuovaTitolo": "Nueva misión",
+   "senzaTitolo": "(sin título)",
+   "cerca": "Buscar por nombre, zona, descripción o PNJ",
+   "tutteZone": "Todas las zonas",
+   "tuttiPng": "Todos los PNJ",
+   "tutte": "Todas",
+   "nessuna": "No hay misiones. Pulsa «Nueva misión» o añade una de las aventuras.",
+   "dalleAvventure": "Misiones de las aventuras",
+   "aggiungiDef": "Añadir al tracker",
+   "attivaDef": "Activar ahora",
+   "daAvventura": "Esta misión viene de una aventura: «Abrir el diario» en su ficha lleva a la página donde está escrita.",
+   "scegliUna": "Elige una misión a la izquierda para verla y editarla.",
+   "attiva": "Activar",
+   "completa": "Completada…",
+   "fallita": "Fallida",
+   "riapri": "Reabrir",
+   "rendiVisibile": "Mostrar en los diarios de los jugadores",
+   "nascondi": "Ocultar a los jugadores",
+   "visibile": "Visible para los jugadores",
+   "nascosta": "Oculta a los jugadores",
+   "mostra": "Abrir a los jugadores",
+   "scheda": "Ficha",
+   "duplica": "Duplicar",
+   "elimina": "Eliminar",
+   "pngPlaceholder": "Escribe un nombre y pulsa Intro, o arrastra aquí un actor",
+   "nuovoObiettivo": "Nuevo objetivo",
+   "nessunObiettivo": "Sin objetivos (opcionales).",
+   "trascinaOggetti": "Arrastra aquí objetos de cualquier compendio o de la barra de objetos; la cantidad se cambia al lado.",
+   "scadenzaPlaceholder": "Por ejemplo: antes de la luna nueva (opcional)"
+  },
+  "Scheda": {
+   "nonDisponibile": "Esta misión no está disponible.",
+   "premiNascosti": "Los jugadores no ven las recompensas",
+   "consegnato": "Recompensas entregadas",
+   "note": "Mis notas",
+   "notePlaceholder": "Tus apuntes: solo los ves tú.",
+   "apriDiario": "Abrir el diario",
+   "modifica": "Editar"
+  },
+  "Consegna": {
+   "titolo": "Misión completada: {titolo}",
+   "spiega": "Elige quién recibe las recompensas. Los objetos van al inventario; la moneda y los puntos de experiencia se suman en la ficha.",
+   "chi": "Quién recibe las recompensas",
+   "nessunPG": "No hay personajes de jugadores en el mundo.",
+   "oggetti": "Objetos",
+   "totale": "Total",
+   "uguali": "a partes iguales",
+   "mano": "decido yo",
+   "aMano": "En este sistema de juego la moneda y los puntos de experiencia no se suman solos: se escriben en el resumen del chat.",
+   "consegna": "Entregar las recompensas y completar",
+   "senzaPremi": "Completar sin recompensas",
+   "daDareAMano": "a entregar a mano",
+   "chat": "Misión completada: {titolo}"
+  },
+  "Diari": {
+   "titolo": "Misiones",
+   "nessuna": "No hay misiones en curso.",
+   "daAttivare": "por activar",
+   "attivaOra": "Activar",
+   "attivaMostra": "Activar y mostrar a los jugadores",
+   "soloAggiungi": "Añadir sin activar"
+  },
+  "Domande": {
+   "elimina": "¿Eliminar la misión «{titolo}»?"
+  },
+  "Avvisi": {
+   "soloMaster": "Solo el DJ puede usar el panel de misiones.",
+   "soloOggetti": "Aquí solo se pueden arrastrar objetos.",
+   "soloAttori": "Aquí solo se pueden arrastrar actores.",
+   "troppi": "«{nome}»: has asignado más de {n}.",
+   "diarioNonTrovato": "El diario de esta misión ya no está en el mundo.",
+   "primaVisibile": "Primero haz la misión visible para los jugadores.",
+   "nonAncora": "Esta misión aún no se ha revelado.",
+   "definizioneNonTrovata": "Misión «{chiave}» no encontrada en los diarios.",
+   "aggiunta": "Misión añadida al tracker: {titolo}."
+  },
+  "Impostazioni": {
+   "lingua": {
+    "nome": "Idioma de Magical Quest Tracker",
+    "hint": "Idioma de los textos de este módulo. «Automático» sigue el idioma de Foundry.",
+    "auto": "Automático"
+   },
+   "nelDiario": {
+    "nome": "Misiones en lo alto de los Diarios",
+    "hint": "Muestra el recuadro de misiones en lo alto de la barra de Diarios (los jugadores solo ven las visibles)."
+   },
+   "tastoPannello": {
+    "nome": "Abrir el panel de misiones",
+    "hint": "Solo para el DJ."
+   }
+  }
+ }
+}
