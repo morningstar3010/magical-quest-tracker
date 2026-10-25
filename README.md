@@ -119,6 +119,7 @@ Put the quests in the flags of a journal page of your adventure, and a link in i
   "png": ["Zhanna"],
   "riassunto": "Zhanna pays 250 gp for the horn.",
   "descrizione": "<p>Bring the horn of a green guardian gargoyle to Zhanna.</p>",
+  "noteMaster": "<p>The gargoyle lairs on Aragnak's island (W-9). Only the GM sees these notes.</p>",
   "obiettivi": [ { "testo": "Find a green guardian gargoyle" }, { "testo": "Bring the horn to Zhanna" } ],
   "ricompense": { "valuta": { "gp": 250 }, "pe": 0, "oggetti": [ { "uuid": "Compendium.my-module.items.Item.xxxxxxxxxxxxxxxx", "nome": "Potion", "quantita": 1 } ] }
 } ] } }
@@ -129,6 +130,9 @@ Put the quests in the flags of a journal page of your adventure, and a link in i
 ```
 
 `@Quest[…]` works too. Without the tracker installed the text stays as it is written.
+
+`noteMaster` (optional) is text only the GM sees: secrets, checks, consequences. In the panel, clicking an adventure quest shows its full preview before you add it.
+
 
 <a name="macros"></a>
 ## 9. Macros

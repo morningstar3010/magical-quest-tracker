@@ -34,7 +34,8 @@
    "altro": "Otras recompensas",
    "premiVisibili": "Recompensas visibles para los jugadores",
    "scadenza": "Plazo",
-   "personaggi": "La siguen"
+   "personaggi": "La siguen",
+   "noteMaster": "Notas del DJ (solo tú)"
   },
   "Premi": {
    "valuta": "Moneda",
@@ -54,6 +55,8 @@
    "dalleAvventure": "Misiones de las aventuras",
    "aggiungiDef": "Añadir al tracker",
    "attivaDef": "Activar ahora",
+   "anteprimaDef": "Misión escrita en la aventura y aún no en el tracker: añádela o actívala para editarla.",
+   "attivaMostraDef": "Activar y mostrar a los jugadores",
    "daAvventura": "Esta misión viene de una aventura: «Abrir el diario» en su ficha lleva a la página donde está escrita.",
    "scegliUna": "Elige una misión a la izquierda para verla y editarla.",
    "attiva": "Activar",

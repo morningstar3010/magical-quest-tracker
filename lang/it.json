@@ -34,7 +34,8 @@
    "altro": "Altri premi",
    "premiVisibili": "Premi visibili ai giocatori",
    "scadenza": "Scadenza",
-   "personaggi": "La seguono"
+   "personaggi": "La seguono",
+   "noteMaster": "Note del master (solo tu)"
   },
   "Premi": {
    "valuta": "Valuta",
@@ -54,6 +55,8 @@
    "dalleAvventure": "Missioni delle avventure",
    "aggiungiDef": "Aggiungi al tracker",
    "attivaDef": "Attiva subito",
+   "anteprimaDef": "Missione scritta nell'avventura e non ancora nel tracker: aggiungila o attivala per modificarla.",
+   "attivaMostraDef": "Attiva e mostra ai giocatori",
    "daAvventura": "Questa missione viene da un'avventura: «Apri il diario» nella scheda porta alla pagina dove è scritta.",
    "scegliUna": "Scegli una missione a sinistra per vederla e modificarla.",
    "attiva": "Attiva",

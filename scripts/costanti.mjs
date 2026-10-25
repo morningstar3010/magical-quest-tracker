@@ -29,6 +29,7 @@ export function completa(m = {}) {
     id: m.id || nuovoId(),
     titolo: m.titolo ?? "",
     descrizione: m.descrizione ?? "",
+    noteMaster: m.noteMaster ?? "",      // HTML che vede solo il master (segreti, tiri, conseguenze)
     riassunto: m.riassunto ?? "",
     zona: m.zona ?? "",
     png: Array.isArray(m.png) ? m.png.filter(Boolean) : (m.png ? [m.png] : []),

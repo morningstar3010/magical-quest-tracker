@@ -34,7 +34,8 @@
    "altro": "Weitere Belohnungen",
    "premiVisibili": "Belohnungen für Spieler sichtbar",
    "scadenza": "Frist",
-   "personaggi": "Verfolgt von"
+   "personaggi": "Verfolgt von",
+   "noteMaster": "SL-Notizen (nur du)"
   },
   "Premi": {
    "valuta": "Währung",
@@ -54,6 +55,8 @@
    "dalleAvventure": "Quests der Abenteuer",
    "aggiungiDef": "Zum Tracker hinzufügen",
    "attivaDef": "Sofort aktivieren",
+   "anteprimaDef": "Im Abenteuer geschriebene Quest, noch nicht im Tracker: füge sie hinzu oder aktiviere sie, um sie zu bearbeiten.",
+   "attivaMostraDef": "Aktivieren und den Spielern zeigen",
    "daAvventura": "Diese Quest stammt aus einem Abenteuer: «Journal öffnen» im Blatt führt zur Seite, auf der sie steht.",
    "scegliUna": "Wähle links eine Quest, um sie zu sehen und zu bearbeiten.",
    "attiva": "Aktivieren",

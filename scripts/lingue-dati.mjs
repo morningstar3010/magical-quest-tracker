@@ -41,7 +41,8 @@ export const TESTI = {
     "altro": "Other rewards",
     "premiVisibili": "Rewards visible to players",
     "scadenza": "Deadline",
-    "personaggi": "Followed by"
+    "personaggi": "Followed by",
+    "noteMaster": "GM notes (only you)"
    },
    "Premi": {
     "valuta": "Currency",
@@ -61,6 +62,8 @@ export const TESTI = {
     "dalleAvventure": "Adventure quests",
     "aggiungiDef": "Add to the tracker",
     "attivaDef": "Activate now",
+    "anteprimaDef": "Quest written in the adventure and not yet in the tracker: add or activate it to edit it.",
+    "attivaMostraDef": "Activate and show to players",
     "daAvventura": "This quest comes from an adventure: «Open the journal» in its sheet leads to the page where it is written.",
     "scegliUna": "Choose a quest on the left to see and edit it.",
     "attiva": "Activate",
@@ -180,7 +183,8 @@ export const TESTI = {
     "altro": "Altri premi",
     "premiVisibili": "Premi visibili ai giocatori",
     "scadenza": "Scadenza",
-    "personaggi": "La seguono"
+    "personaggi": "La seguono",
+    "noteMaster": "Note del master (solo tu)"
    },
    "Premi": {
     "valuta": "Valuta",
@@ -200,6 +204,8 @@ export const TESTI = {
     "dalleAvventure": "Missioni delle avventure",
     "aggiungiDef": "Aggiungi al tracker",
     "attivaDef": "Attiva subito",
+    "anteprimaDef": "Missione scritta nell'avventura e non ancora nel tracker: aggiungila o attivala per modificarla.",
+    "attivaMostraDef": "Attiva e mostra ai giocatori",
     "daAvventura": "Questa missione viene da un'avventura: «Apri il diario» nella scheda porta alla pagina dove è scritta.",
     "scegliUna": "Scegli una missione a sinistra per vederla e modificarla.",
     "attiva": "Attiva",
@@ -319,7 +325,8 @@ export const TESTI = {
     "altro": "Weitere Belohnungen",
     "premiVisibili": "Belohnungen für Spieler sichtbar",
     "scadenza": "Frist",
-    "personaggi": "Verfolgt von"
+    "personaggi": "Verfolgt von",
+    "noteMaster": "SL-Notizen (nur du)"
    },
    "Premi": {
     "valuta": "Währung",
@@ -339,6 +346,8 @@ export const TESTI = {
     "dalleAvventure": "Quests der Abenteuer",
     "aggiungiDef": "Zum Tracker hinzufügen",
     "attivaDef": "Sofort aktivieren",
+    "anteprimaDef": "Im Abenteuer geschriebene Quest, noch nicht im Tracker: füge sie hinzu oder aktiviere sie, um sie zu bearbeiten.",
+    "attivaMostraDef": "Aktivieren und den Spielern zeigen",
     "daAvventura": "Diese Quest stammt aus einem Abenteuer: «Journal öffnen» im Blatt führt zur Seite, auf der sie steht.",
     "scegliUna": "Wähle links eine Quest, um sie zu sehen und zu bearbeiten.",
     "attiva": "Aktivieren",
@@ -458,7 +467,8 @@ export const TESTI = {
     "altro": "Otras recompensas",
     "premiVisibili": "Recompensas visibles para los jugadores",
     "scadenza": "Plazo",
-    "personaggi": "La siguen"
+    "personaggi": "La siguen",
+    "noteMaster": "Notas del DJ (solo tú)"
    },
    "Premi": {
     "valuta": "Moneda",
@@ -478,6 +488,8 @@ export const TESTI = {
     "dalleAvventure": "Misiones de las aventuras",
     "aggiungiDef": "Añadir al tracker",
     "attivaDef": "Activar ahora",
+    "anteprimaDef": "Misión escrita en la aventura y aún no en el tracker: añádela o actívala para editarla.",
+    "attivaMostraDef": "Activar y mostrar a los jugadores",
     "daAvventura": "Esta misión viene de una aventura: «Abrir el diario» en su ficha lleva a la página donde está escrita.",
     "scegliUna": "Elige una misión a la izquierda para verla y editarla.",
     "attiva": "Activar",

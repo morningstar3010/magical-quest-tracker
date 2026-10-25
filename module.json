@@ -2,7 +2,7 @@
   "id": "magical-quest-tracker",
   "title": "Magical Quest Tracker",
   "description": "<p>Il diario delle missioni per il master, visibile ai giocatori solo quando lo permette lui. Pannello privato con tutte le missioni, ricerca per nome, zona, descrizione e PNG, filtri per zona, PNG e stato; obiettivi da spuntare (anche segreti), premi con oggetti trascinati da qualsiasi compendio, valuta e punti esperienza; a missione completata il master decide chi riceve cosa, in parti uguali o a mano, e tutto finisce nelle schede. Riquadro delle missioni in cima ai Diari e scheda della missione con le note personali di ogni giocatore. Le avventure possono contenere missioni già pronte da attivare dal pannello o dal diario. English, Italiano, Deutsch, Español.</p>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "MorningStar"
@@ -10,7 +10,7 @@
   ],
   "url": "https://github.com/morningstar3010/magical-quest-tracker/",
   "manifest": "https://github.com/morningstar3010/magical-quest-tracker/releases/latest/download/module.json",
-  "download": "https://github.com/morningstar3010/magical-quest-tracker/releases/download/1.0.0/magical-quest-tracker.zip",
+  "download": "https://github.com/morningstar3010/magical-quest-tracker/releases/download/1.0.1/magical-quest-tracker.zip",
   "compatibility": {
     "minimum": "13",
     "verified": "14"

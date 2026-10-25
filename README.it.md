@@ -119,6 +119,7 @@ Metti le missioni nei flag di una pagina di diario della tua avventura e un rich
   "png": ["Zhanna"],
   "riassunto": "Zhanna paga 250 mo per il corno.",
   "descrizione": "<p>Portare a Zhanna il corno di un gargoyle guardiano verde.</p>",
+  "noteMaster": "<p>Il gargoyle sta all'Isola-Tana (W-9). Solo il master vede queste note.</p>",
   "obiettivi": [ { "testo": "Trovare un gargoyle guardiano verde" }, { "testo": "Portare il corno a Zhanna" } ],
   "ricompense": { "valuta": { "gp": 250 }, "pe": 0, "oggetti": [ { "uuid": "Compendium.mio-modulo.oggetti.Item.xxxxxxxxxxxxxxxx", "nome": "Pozione", "quantita": 1 } ] }
 } ] } }
@@ -129,6 +130,9 @@ Metti le missioni nei flag di una pagina di diario della tua avventura e un rich
 ```
 
 Funziona anche `@Quest[…]`. Senza il tracker installato il testo resta com'è scritto.
+
+`noteMaster` (facoltativo) è testo che vede solo il master: segreti, prove, conseguenze. Nel pannello cliccando una missione delle avventure se ne vede l'anteprima completa prima di aggiungerla.
+
 
 <a name="macros"></a>
 ## 9. Macro

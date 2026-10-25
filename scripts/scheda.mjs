@@ -66,13 +66,15 @@ export class SchedaMissione extends ApplicationV2 {
     const seguono = chi.length ? `<p><strong>${esc(t("MQT.Campi.personaggi"))}:</strong> ${chi.map(esc).join(", ")}</p>` : "";
     const consegna = m.consegna?.testo ? `<h3>${esc(t("MQT.Scheda.consegnato"))}</h3><div class="mqt-consegna">${m.consegna.testo}</div>` : "";
     const note = (game.user.getFlag(MOD, "note") ?? {})[m.id] ?? "";
+    const relativo = m.origine ? await fromUuid(m.origine).catch(() => null) : null;
+    const noteMaster = gm && m.noteMaster ? `<div class="mqt-note-master"><h3><i class="fa-solid fa-user-secret"></i> ${esc(t("MQT.Campi.noteMaster"))}</h3>${await arricchisci(m.noteMaster, { relativeTo: relativo })}</div>` : "";
     return `<div class="mqt-testa">
         ${m.immagine ? `<img class="mqt-immagine" src="${esc(m.immagine)}">` : ""}
         <div><h2>${esc(m.titolo)}</h2>
           <p class="mqt-stato stato-${m.stato}"><i class="${ICONE_STATO[m.stato]}"></i> ${esc(t(`MQT.Stati.${m.stato}`))}
           ${gm ? `<i class="fa-solid ${m.visibile ? "fa-eye" : "fa-eye-slash"}" data-tooltip="${esc(t(m.visibile ? "MQT.Pannello.visibile" : "MQT.Pannello.nascosta"))}"></i>` : ""}</p>
           ${zona}${png}${scad}</div></div>
-      ${riass}<div class="mqt-descrizione">${desc}</div>${ob}${premi}${seguono}${consegna}
+      ${riass}<div class="mqt-descrizione">${desc}</div>${noteMaster}${ob}${premi}${seguono}${consegna}
       <h3>${esc(t("MQT.Scheda.note"))}</h3><textarea class="mqt-note" placeholder="${esc(t("MQT.Scheda.notePlaceholder"))}">${esc(note)}</textarea>
       <div class="mqt-fila">${m.origine ? `<button type="button" data-action="diario"><i class="fa-solid fa-book-open"></i> ${esc(t("MQT.Scheda.apriDiario"))}</button>` : ""}
       ${gm ? `<button type="button" data-action="modifica"><i class="fa-solid fa-pen"></i> ${esc(t("MQT.Scheda.modifica"))}</button>` : ""}</div>`;

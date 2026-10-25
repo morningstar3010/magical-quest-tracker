@@ -34,7 +34,8 @@
    "altro": "Other rewards",
    "premiVisibili": "Rewards visible to players",
    "scadenza": "Deadline",
-   "personaggi": "Followed by"
+   "personaggi": "Followed by",
+   "noteMaster": "GM notes (only you)"
   },
   "Premi": {
    "valuta": "Currency",
@@ -54,6 +55,8 @@
    "dalleAvventure": "Adventure quests",
    "aggiungiDef": "Add to the tracker",
    "attivaDef": "Activate now",
+   "anteprimaDef": "Quest written in the adventure and not yet in the tracker: add or activate it to edit it.",
+   "attivaMostraDef": "Activate and show to players",
    "daAvventura": "This quest comes from an adventure: «Open the journal» in its sheet leads to the page where it is written.",
    "scegliUna": "Choose a quest on the left to see and edit it.",
    "attiva": "Activate",

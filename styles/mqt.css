@@ -119,3 +119,20 @@
 a.mqt-link .mqt-badge { font-size: 0.75em; padding: 0 5px; border-radius: 8px; background: rgba(0, 0, 0, 0.15); }
 a.mqt-link .mqt-badge.stato-nuova { background: rgba(201, 162, 39, 0.35); }
 .mqt-chat h3 { border: none; margin: 0 0 4px; }
+
+/* Dialogo di anteprima di una missione dell'avventura: i pulsanti vanno a capo e si leggono per intero */
+.application.mqt-dialogo-missione .form-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.application.mqt-dialogo-missione .form-footer button { white-space: normal; height: auto; min-height: 2.25rem; line-height: 1.2; padding: 0.35rem 0.6rem; overflow: visible; text-overflow: clip; }
+.application.mqt-dialogo-missione .window-content { max-height: 75vh; overflow-y: auto; }
+.mqt .mqt-azioni button { white-space: normal; height: auto; min-height: 2rem; line-height: 1.2; }
+
+/* Note del master (solo master): riquadro a parte */
+.mqt-note-master { margin: 0.75rem 0; padding: 0.5rem 0.75rem; border-left: 4px solid #7a2a1a; background: rgba(122, 42, 26, 0.08); border-radius: 4px; }
+.mqt-note-master h3 { margin-top: 0; font-size: var(--font-size-14, 14px); }
+.mqt-pannello .mqt-blocco.mqt-note-master { padding: 0.4rem 0.6rem; }
+
+/* Pannello: missioni delle avventure cliccabili, anteprima a destra */
+.mqt-pannello .mqt-def { cursor: pointer; }
+.mqt-pannello .mqt-def.scelta { outline: 2px solid var(--color-border-highlight, #ff6400); }
+.mqt-pannello .mqt-anteprima-def .mqt-immagine { float: right; max-width: 160px; margin: 0 0 0.5rem 0.75rem; }
+.mqt-pannello .mqt-anteprima-def::after { content: ""; display: block; clear: both; }

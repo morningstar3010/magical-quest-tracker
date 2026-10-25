@@ -104,6 +104,7 @@ async function anteprima(def) {
   return `<div class="mqt mqt-anteprima">${def.immagine ? `<img class="mqt-immagine" src="${esc(def.immagine)}">` : ""}
     <h2>${esc(def.titolo)}</h2>${def.zona ? `<p><strong>${esc(t("MQT.Campi.zona"))}:</strong> ${esc(def.zona)}</p>` : ""}
     ${def.riassunto ? `<p class="mqt-riassunto">${esc(def.riassunto)}</p>` : ""}<div>${desc}</div>
+    ${def.noteMaster ? `<div class="mqt-note-master"><h3><i class="fa-solid fa-user-secret"></i> ${esc(t("MQT.Campi.noteMaster"))}</h3>${await arricchisci(def.noteMaster)}</div>` : ""}
     ${ob ? `<h3>${esc(t("MQT.Campi.obiettivi"))}</h3><ul>${ob}</ul>` : ""}</div>`;
 }
 
@@ -122,7 +123,8 @@ async function clicLink(ev) {
   if (!d) return ui.notifications.warn(t("MQT.Avvisi.definizioneNonTrovata", { chiave }));
   const scelta = await DialogV2.wait({
     window: { title: d.def.titolo || "MQT.Missione" },
-    position: { width: 520 },
+    classes: ["mqt-dialogo-missione"],
+    position: { width: 640 },
     content: await anteprima(d.def),
     buttons: [
       { action: "attiva", label: "MQT.Diari.attivaOra", icon: "fa-solid fa-flag", default: true },

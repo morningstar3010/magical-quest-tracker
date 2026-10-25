@@ -10,11 +10,11 @@
  * Pulsanti: Attiva, Completa (apre la consegna dei premi), Fallita, Riapri, Mostra ai giocatori, Duplica, Elimina.
  */
 import { MOD, t, esc, STATI, ICONE_STATO, normalizza, soloTesto, nuovoId } from "./costanti.mjs";
-import { elenco, trova, modifica, elimina, nuova, duplica, definizioni, daChiave, daAvventura } from "./dati.mjs";
+import { elenco, trova, modifica, elimina, nuova, duplica, definizioni, definizione, daChiave, daAvventura } from "./dati.mjs";
 import { valute, personaggiGiocatori, haPE } from "./sistema.mjs";
 import { apriScheda } from "./scheda.mjs";
 import { apriConsegna } from "./consegna.mjs";
-import { datiTrascinati } from "./testo.mjs";
+import { datiTrascinati, arricchisci } from "./testo.mjs";
 import { mostraATutti } from "./socket.mjs";
 
 const { ApplicationV2, DialogV2 } = foundry.applications.api;
@@ -53,11 +53,16 @@ export class PannelloMissioni extends ApplicationV2 {
       togliPng: PannelloMissioni.#togliPng,
       aggiungiDef: PannelloMissioni.#aggiungiDef,
       attivaDef: PannelloMissioni.#attivaDef,
+      scegliDef: PannelloMissioni.#scegliDef,
+      attivaMostraDef: PannelloMissioni.#attivaMostraDef,
+      diarioDef: PannelloMissioni.#diarioDef,
       apriPremio: PannelloMissioni.#apriPremio
     }
   };
 
   scelta = null;
+  sceltaDef = null;        // definizione di un'avventura in anteprima (non ancora nel tracker)
+  arricchiti = {};         // HTML arricchito per gli editor (descrizione, note del master)
   filtro = { testo: "", zona: "", png: "", stato: "tutte" };
   scorrimento = [0, 0];
 
@@ -66,13 +71,17 @@ export class PannelloMissioni extends ApplicationV2 {
   async _renderHTML() {
     const tutte = elenco();
     if (this.scelta && !tutte.find(m => m.id === this.scelta)) this.scelta = null;
+    if (this.sceltaDef && daChiave(this.sceltaDef)) { this.scelta = daChiave(this.sceltaDef).id; this.sceltaDef = null; }
+    const sc = this.scelta ? trova(this.scelta) : null;
+    this.arricchiti = sc ? { descrizione: await arricchisci(sc.descrizione), noteMaster: await arricchisci(sc.noteMaster) } : {};
+    const destra = sc ? this.#editor() : (this.sceltaDef ? await this.#anteprimaDef(this.sceltaDef) : this.#editor());
     const zone = [...new Set(tutte.map(m => m.zona).filter(Boolean))].sort((a, b) => a.localeCompare(b));
     const png = [...new Set(tutte.flatMap(m => m.png.map(p => this.#nomePng(p))).filter(Boolean))].sort((a, b) => a.localeCompare(b));
     const conti = Object.fromEntries(STATI.map(s => [s, tutte.filter(m => m.stato === s).length]));
     const schede = ["tutte", ...STATI].map(s => `<a class="${this.filtro.stato === s ? "attiva" : ""}" data-action="stato" data-stato="${s}">${s === "tutte" ? esc(t("MQT.Pannello.tutte")) : `<i class="${ICONE_STATO[s]}"></i> ${esc(t(`MQT.Stati.${s}`))}`} <span>${s === "tutte" ? tutte.length : conti[s]}</span></a>`).join("");
     const voci = tutte.map(m => {
       const ob = m.obiettivi.length ? ` · ${m.obiettivi.filter(o => o.fatto).length}/${m.obiettivi.length}` : "";
-      const cerca = normalizza([m.titolo, m.zona, soloTesto(m.descrizione), m.riassunto, ...m.png.map(p => this.#nomePng(p))].join(" "));
+      const cerca = normalizza([m.titolo, m.zona, soloTesto(m.descrizione), soloTesto(m.noteMaster), m.riassunto, ...m.png.map(p => this.#nomePng(p))].join(" "));
       return `<li class="mqt-voce stato-${m.stato} ${m.id === this.scelta ? "scelta" : ""}" data-action="scegli" data-id="${m.id}"
           data-cerca="${esc(cerca)}" data-zona="${esc(m.zona)}" data-png="${esc(m.png.map(p => this.#nomePng(p)).join("|"))}" data-stato="${m.stato}">
         <i class="${ICONE_STATO[m.stato]}"></i><div><strong>${esc(m.titolo || t("MQT.Pannello.senzaTitolo"))}</strong>
@@ -80,7 +89,7 @@ export class PannelloMissioni extends ApplicationV2 {
         <i class="fa-solid ${m.visibile ? "fa-eye" : "fa-eye-slash"} mqt-occhio" data-tooltip="${esc(t(m.visibile ? "MQT.Pannello.visibile" : "MQT.Pannello.nascosta"))}"></i></li>`;
     }).join("");
     const defs = definizioni().filter(d => !daChiave(d.def.id));
-    const voceDef = defs.map(d => `<li class="mqt-voce mqt-def" data-chiave="${esc(d.def.id)}"
+    const voceDef = defs.map(d => `<li class="mqt-voce mqt-def ${d.def.id === this.sceltaDef ? "scelta" : ""}" data-action="scegliDef" data-chiave="${esc(d.def.id)}"
         data-cerca="${esc(normalizza([d.def.titolo, d.def.zona, soloTesto(d.def.descrizione), d.def.riassunto, ...(d.def.png ?? [])].join(" ")))}" data-zona="${esc(d.def.zona ?? "")}" data-png="${esc((d.def.png ?? []).join("|"))}" data-stato="disponibile">
         <i class="fa-solid fa-book"></i><div><strong>${esc(d.def.titolo)}</strong><small>${esc(d.diario.name)}${d.def.zona ? ` · ${esc(d.def.zona)}` : ""}</small></div>
         <a data-action="aggiungiDef" data-tooltip="${esc(t("MQT.Pannello.aggiungiDef"))}"><i class="fa-solid fa-plus"></i></a>
@@ -93,7 +102,7 @@ export class PannelloMissioni extends ApplicationV2 {
       <ul class="mqt-elenco">${voci || `<li class="mqt-vuoto">${esc(t("MQT.Pannello.nessuna"))}</li>`}</ul>
       ${defs.length ? `<h4 class="mqt-titolo-def"><i class="fa-solid fa-book-open"></i> ${esc(t("MQT.Pannello.dalleAvventure"))} (${defs.length})</h4><ul class="mqt-elenco mqt-elenco-def">${voceDef}</ul>` : ""}`;
     return `<div class="mqt-barra"><button type="button" data-action="nuova"><i class="fa-solid fa-plus"></i> ${esc(t("MQT.Pannello.nuova"))}</button></div>
-      <div class="mqt-corpo"><aside class="mqt-sinistra">${sinistra}</aside><section class="mqt-destra">${this.#editor()}</section></div>`;
+      <div class="mqt-corpo"><aside class="mqt-sinistra">${sinistra}</aside><section class="mqt-destra">${destra}</section></div>`;
   }
 
   #nomePng(p) {
@@ -136,7 +145,8 @@ export class PannelloMissioni extends ApplicationV2 {
         </div>
         ${campo("png", `<div class="mqt-png mqt-rilascio" data-rilascio="png">${png}<input type="text" class="mqt-nuovo-png" placeholder="${esc(t("MQT.Pannello.pngPlaceholder"))}"></div>`)}
         ${campo("riassunto", `<input type="text" data-campo="riassunto" value="${esc(m.riassunto)}">`)}
-        <div class="form-group mqt-blocco"><label>${esc(t("MQT.Campi.descrizione"))}</label><div class="mqt-descrizione-editor"></div></div>
+        <div class="form-group mqt-blocco"><label>${esc(t("MQT.Campi.descrizione"))}</label><div class="mqt-descrizione-editor" data-editor="descrizione"></div></div>
+        <div class="form-group mqt-blocco mqt-note-master"><label><i class="fa-solid fa-user-secret"></i> ${esc(t("MQT.Campi.noteMaster"))}</label><div class="mqt-descrizione-editor" data-editor="noteMaster"></div></div>
         <h3>${esc(t("MQT.Campi.obiettivi"))} <a data-action="nuovoObiettivo" data-tooltip="${esc(t("MQT.Pannello.nuovoObiettivo"))}"><i class="fa-solid fa-plus"></i></a></h3>
         <ul class="mqt-obiettivi-editor">${ob || `<li class="mqt-nota">${esc(t("MQT.Pannello.nessunObiettivo"))}</li>`}</ul>
         <h3>${esc(t("MQT.Campi.ricompense"))}</h3>
@@ -159,22 +169,55 @@ export class PannelloMissioni extends ApplicationV2 {
     this.#applicaFiltri();
   }
 
-  /** Editor della descrizione: ProseMirror di Foundry se c'è, altrimenti un'area di testo. */
+  /** Editor della descrizione e delle note del master: ProseMirror di Foundry (con il testo già arricchito, se no
+   *  in modalità lettura sembra vuoto), altrimenti un'area di testo. */
   #editorDescrizione(contenuto) {
-    const posto = contenuto.querySelector(".mqt-descrizione-editor");
     const m = this.scelta ? trova(this.scelta) : null;
-    if (!posto || !m) return;
+    if (!m) return;
     const PM = foundry.applications?.elements?.HTMLProseMirrorElement;
-    if (PM?.create) {
-      const el = PM.create({ name: "descrizione", value: m.descrizione ?? "", toggled: true, collaborate: false });
-      el.addEventListener("change", ev => modifica(m.id, { descrizione: ev.currentTarget.value ?? el.value }));
-      posto.append(el);
-    } else {
-      const ta = document.createElement("textarea");
-      ta.value = m.descrizione ?? ""; ta.rows = 6;
-      ta.addEventListener("change", () => modifica(m.id, { descrizione: ta.value }));
-      posto.append(ta);
+    for (const posto of contenuto.querySelectorAll(".mqt-descrizione-editor[data-editor]")) {
+      const campo = posto.dataset.editor;
+      if (PM?.create) {
+        const el = PM.create({ name: campo, value: m[campo] ?? "", enriched: this.arricchiti[campo] ?? "", toggled: true, collaborate: false });
+        el.addEventListener("change", ev => modifica(m.id, { [campo]: ev.currentTarget.value ?? el.value }));
+        posto.append(el);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = m[campo] ?? ""; ta.rows = 6;
+        ta.addEventListener("change", () => modifica(m.id, { [campo]: ta.value }));
+        posto.append(ta);
+      }
     }
+  }
+
+  /** Anteprima (sola lettura) di una missione scritta in un'avventura, con Aggiungi / Attiva / Attiva e mostra. */
+  async #anteprimaDef(chiave) {
+    const d = definizione(chiave);
+    if (!d) { this.sceltaDef = null; return this.#editor(); }
+    const def = d.def;
+    const ob = (def.obiettivi ?? []).map(o => `<li>${esc(o.testo)}${o.segreto ? ` <i class="fa-solid fa-user-secret" data-tooltip="${esc(t("MQT.Campi.segreto"))}"></i>` : ""}</li>`).join("");
+    const r = def.ricompense ?? {}, premi = [];
+    const monete = valute().filter(v => r.valuta?.[v.chiave]).map(v => `${r.valuta[v.chiave]} ${esc(v.nome)}`).join(", ");
+    if (monete) premi.push(`<li><i class="fa-solid fa-coins"></i> ${monete}</li>`);
+    if (r.pe) premi.push(`<li><i class="fa-solid fa-star"></i> ${r.pe} ${esc(t("MQT.Premi.pe"))}</li>`);
+    if (r.altro) premi.push(`<li><i class="fa-solid fa-gift"></i> ${esc(r.altro)}</li>`);
+    for (const o of r.oggetti ?? []) premi.push(`<li><i class="fa-solid fa-box-open"></i> ${esc(o.nome)}${o.quantita > 1 ? ` ×${o.quantita}` : ""}</li>`);
+    const rel = { relativeTo: d.pagina };
+    return `<div class="mqt-azioni">
+        <button type="button" data-action="attivaDef" data-chiave="${esc(chiave)}"><i class="fa-solid fa-flag"></i> ${esc(t("MQT.Pannello.attivaDef"))}</button>
+        <button type="button" data-action="attivaMostraDef" data-chiave="${esc(chiave)}"><i class="fa-solid fa-eye"></i> ${esc(t("MQT.Pannello.attivaMostraDef"))}</button>
+        <button type="button" data-action="aggiungiDef" data-chiave="${esc(chiave)}"><i class="fa-solid fa-plus"></i> ${esc(t("MQT.Pannello.aggiungiDef"))}</button>
+        <button type="button" data-action="diarioDef" data-chiave="${esc(chiave)}"><i class="fa-solid fa-book-open"></i> ${esc(t("MQT.Scheda.apriDiario"))}</button></div>
+      <p class="mqt-nota"><i class="fa-solid fa-book"></i> ${esc(t("MQT.Pannello.anteprimaDef"))}</p>
+      <div class="mqt-anteprima-def">${def.immagine ? `<img class="mqt-immagine" src="${esc(def.immagine)}">` : ""}
+        <h2>${esc(def.titolo)}</h2>
+        ${def.zona ? `<p><strong>${esc(t("MQT.Campi.zona"))}:</strong> ${esc(def.zona)}</p>` : ""}
+        ${def.png?.length ? `<p><strong>${esc(t("MQT.Campi.png"))}:</strong> ${def.png.map(esc).join(", ")}</p>` : ""}
+        ${def.riassunto ? `<p class="mqt-riassunto">${esc(def.riassunto)}</p>` : ""}
+        <div class="mqt-descrizione">${await arricchisci(def.descrizione ?? "", rel)}</div>
+        ${def.noteMaster ? `<div class="mqt-note-master"><h3><i class="fa-solid fa-user-secret"></i> ${esc(t("MQT.Campi.noteMaster"))}</h3>${await arricchisci(def.noteMaster, rel)}</div>` : ""}
+        ${ob ? `<h3>${esc(t("MQT.Campi.obiettivi"))}</h3><ul>${ob}</ul>` : ""}
+        ${premi.length ? `<h3>${esc(t("MQT.Campi.ricompense"))}</h3><ul class="mqt-premi">${premi.join("")}</ul>` : ""}</div>`;
   }
 
   _onFirstRender() {
@@ -260,7 +303,7 @@ export class PannelloMissioni extends ApplicationV2 {
 
   static #scegli(ev, el) {
     if (ev.target.closest(".mqt-occhio")) return PannelloMissioni.#visibile.call(this, ev, el, el.dataset.id);
-    this.scelta = el.dataset.id;
+    this.scelta = el.dataset.id; this.sceltaDef = null;
     this.render();
   }
 
@@ -310,23 +353,39 @@ export class PannelloMissioni extends ApplicationV2 {
     return modifica(this.scelta, m => { m.png.splice(i, 1); });
   }
 
+  static #scegliDef(ev, el) {
+    this.sceltaDef = el.dataset.chiave; this.scelta = null;
+    this.render();
+  }
+
+  static async #attivaMostraDef(ev, el) {
+    const m = await daAvventura(el.closest("[data-chiave]").dataset.chiave, { stato: "attiva", visibile: true });
+    if (m) { this.scelta = m.id; this.sceltaDef = null; this.render(); mostraATutti(m.id); }
+  }
+
+  static async #diarioDef(ev, el) {
+    const d = definizione(el.closest("[data-chiave]").dataset.chiave);
+    if (d) d.diario.sheet.render(true, { pageId: d.pagina.id });
+  }
+
   static async #aggiungiDef(ev, el) {
     const m = await daAvventura(el.closest("[data-chiave]").dataset.chiave);
-    if (m) { this.scelta = m.id; this.render(); }
+    if (m) { this.scelta = m.id; this.sceltaDef = null; this.render(); }
   }
 
   static async #attivaDef(ev, el) {
     const m = await daAvventura(el.closest("[data-chiave]").dataset.chiave, { stato: "attiva" });
-    if (m) { this.scelta = m.id; this.render(); }
+    if (m) { this.scelta = m.id; this.sceltaDef = null; this.render(); }
   }
 }
 
 let PANNELLO = null;
 
-export function apriPannello(id = null) {
+export function apriPannello(id = null, chiaveDef = null) {
   if (!game.user.isGM) return ui.notifications.warn(t("MQT.Avvisi.soloMaster"));
   PANNELLO ??= new PannelloMissioni();
-  if (id) PANNELLO.scelta = id;
+  if (id) { PANNELLO.scelta = id; PANNELLO.sceltaDef = null; }
+  else if (chiaveDef) { PANNELLO.sceltaDef = chiaveDef; PANNELLO.scelta = null; }
   PANNELLO.render({ force: true });
   return PANNELLO;
 }
